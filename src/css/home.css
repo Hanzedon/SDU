@@ -1,0 +1,45 @@
+.background_img {
+    width: 100%;
+}
+
+.category {
+    padding: 70px;
+}
+
+.category h1 {
+    font-weight: bold;
+}
+
+.goods {
+    max-width: 200px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+
+.goods_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.heart_img {
+    margin: 5px;
+    position: absolute;
+    width: 25px;
+    z-index: 4;
+}
+
+.goods_img {
+    height: 250px !important;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 20px;
+}
