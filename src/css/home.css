@@ -3,7 +3,8 @@
 }
 
 .category {
-    padding: 70px;
+    padding: 60px;
+    padding-bottom: 120px;
 }
 
 .category h1 {
@@ -16,28 +17,32 @@
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
-    height: fit-content;
 }
 
 .goods_list {
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
 }
 
 .heart_img {
     margin: 5px;
+    margin-left: 8px;
     position: absolute;
     width: 25px;
     z-index: 4;
 }
 
 .goods_img {
+    display: flex;
+    justify-content: center;
     height: 250px !important;
 }
 
 .center {
     display: flex;
     justify-content: center;
+    margin: 0 auto;
 }
 
 h2 {

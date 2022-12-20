@@ -4,21 +4,41 @@
 
 .goods_wrapper {
     display: flex;
-    justify-content: space-between;
-    height: 100%;
-    padding: 150px 0 0 100px;
+    padding: 200px 0 0 100px;
+}
+
+.img_sarousel {
+    background-size: cover;
+    width: x;
+    height: y;
+
+}
+
+.carousel {
+    max-width: 300px;
+}
+
+.img_sarousel {
+    max-width: 100px;
+}
+
+.img_sarousel img {
+    height: 400px;
 }
 
 .slideshow-container {
-    min-width: 400px;
+    display: flex;
+    justify-content: space-between;
     position: relative;
 }
 
+.bttn {
+    margin-top: 40%;
+}
+
 .prev, .next {
-    position: absolute;
-    top: 50%;
-    margin-top: -22px;
-    padding: 16px;
+    margin: 0 20px 0 20px;
+    padding: 15px;
     font-weight: bold;
     font-size: 30px;
     transition: 0.2s ease;
@@ -26,19 +46,9 @@
 }
 
 .next {
-    right: 0;
     border-radius: 3px 3px 3px 3px;
 }
 
 .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.5);
-}
-
-.img_sarousel {
-    display: flex;
-    justify-content: center;
-}
-
-.wertwert {
-    max-height: 350px;
 }
