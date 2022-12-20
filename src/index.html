@@ -9,9 +9,11 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
     <body onload="myfunction()">
-        <section class="sign_up" id="sign_up_img">
+        <section class="sign_in" id="sign_in_img">
             <div>
-                <img src="images/maha_wanted.jpg" alt="">
+                <img onclick="sign_in()" src="images/maha_wanted.jpg" style="width: 50px">
+                <input type="text">
+                <input type="text">
             </div>
         </section>
         <div class="main">
@@ -37,7 +39,7 @@
                         </a>
                     </div>
                     <div class="for_icon">
-                        <a onmouseover="qwerty(4, 6)" onmouseout="qwerty1(4, 6)" onclick="sign_up()">
+                        <a onmouseover="qwerty(4, 6)" onmouseout="qwerty1(4, 6)" onclick="sign_in()">
                             <svg class="svg-icon" viewBox="0 0 20 20">
                                 <path class="header_icon" fill="none" d="M10,10.9c2.373,0,4.303-1.932,4.303-4.306c0-2.372-1.93-4.302-4.303-4.302S5.696,4.223,5.696,6.594C5.696,8.969,7.627,10.9,10,10.9z M10,3.331c1.801,0,3.266,1.463,3.266,3.263c0,1.802-1.465,3.267-3.266,3.267c-1.8,0-3.265-1.465-3.265-3.267C6.735,4.794,8.2,3.331,10,3.331z"></path>
                                 <path class="header_icon" fill="none" d="M10,12.503c-4.418,0-7.878,2.058-7.878,4.685c0,0.288,0.231,0.52,0.52,0.52c0.287,0,0.519-0.231,0.519-0.52c0-1.976,3.132-3.646,6.84-3.646c3.707,0,6.838,1.671,6.838,3.646c0,0.288,0.234,0.52,0.521,0.52s0.52-0.231,0.52-0.52C17.879,14.561,14.418,12.503,10,12.503z"></path>
@@ -184,7 +186,7 @@
                         <div class="goods_list">
                             <div>
                                 <img onclick="like(12)" onmouseover="qweqwe(12)" onmouseout="qweqwe(12)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(12)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                             <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
@@ -196,7 +198,7 @@
                             </div>
                             <div>
                                 <img onclick="like(13)" onmouseover="qweqwe(13)" onmouseout="qweqwe(13)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(13)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                             <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
@@ -208,7 +210,7 @@
                             </div>
                             <div>
                                 <img onclick="like(14)" onmouseover="qweqwe(14)" onmouseout="qweqwe(14)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(14)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                             <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
@@ -220,7 +222,7 @@
                             </div>
                             <div>
                                 <img onclick="like(15)" onmouseover="qweqwe(15)" onmouseout="qweqwe(15)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(15)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                             <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
@@ -232,7 +234,7 @@
                             </div>
                             <div>
                                 <img onclick="like(16)" onmouseover="qweqwe(16)" onmouseout="qweqwe(16)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(16)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                             <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
@@ -244,7 +246,7 @@
                             </div>
                             <div>
                                 <img onclick="like(17)" onmouseover="qweqwe(17)" onmouseout="qweqwe(17)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(17)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                             <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
@@ -261,7 +263,7 @@
                         <div class="goods_list">
                             <div>
                                 <img onclick="like(18)" onmouseover="qweqwe(18)" onmouseout="qweqwe(18)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(18)" href="goods.html">
                                     <div class="goods">
                                         <img class="goods_img hoodies_img" src="images/maha_wanted.jpg" alt="">
                                         <h2>#</h2>
@@ -271,7 +273,7 @@
                             </div>
                             <div>
                                 <img onclick="like(19)" onmouseover="qweqwe(19)" onmouseout="qweqwe(19)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(19)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                         </div>
@@ -283,7 +285,7 @@
                             </div>
                             <div>
                                 <img onclick="like(20)" onmouseover="qweqwe(20)" onmouseout="qweqwe(20)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(20)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                         </div>
@@ -295,7 +297,7 @@
                             </div>
                             <div>
                                 <img onclick="like(21)" onmouseover="qweqwe(21)" onmouseout="qweqwe(21)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(21)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                         </div>
@@ -307,7 +309,7 @@
                             </div>
                             <div>
                                 <img onclick="like(22)" onmouseover="qweqwe(22)" onmouseout="qweqwe(22)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(22)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                         </div>
@@ -319,7 +321,7 @@
                             </div>
                             <div>
                                 <img onclick="like(23)" onmouseover="qweqwe(23)" onmouseout="qweqwe(23)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a href="https://www.youtube.com/">
+                                <a onclick="open_img(23)" href="goods.html">
                                     <div class="goods">
                                         <div class="center">
                                         </div>
