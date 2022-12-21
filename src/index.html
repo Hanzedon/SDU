@@ -7,13 +7,14 @@
         <title>Document</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
-    <body onload="myfunction()">
-        <section class="sign_in" id="sign_in_img">
-            <div>
-                <img onclick="sign_in()" src="images/maha_wanted.jpg" style="width: 50px">
-                <input type="text">
-                <input type="text">
+    <body>
+        <section class="sign_in" id="sign_in_close">
+            <img onclick="sign_in()" src="images/maha_wanted.jpg" style="width: 50px">
+            <input type="text">
+            <input type="text">
+            <div class="sign_in">
             </div>
         </section>
         <div class="main">
@@ -51,313 +52,20 @@
             <div class="wrapper">
                 <img class="background_img" src="images/background.jpg" alt="">
                 <section class="category">
-                    <div class="pop">
-                        <h1>POP</h1>
-                        <div class="goods_list">
-                            <div>
-                                <img onclick="like(0)" onmouseover="qweqwe(0)" onmouseout="qweqwe(0)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(0)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pop_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(1)" onmouseover="qweqwe(1)" onmouseout="qweqwe(1)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(1)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pop_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(2)" onmouseover="qweqwe(2)" onmouseout="qweqwe(2)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(2)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pop_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                            <h2>#</h2>
-                                            <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(3)" onmouseover="qweqwe(3)" onmouseout="qweqwe(3)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(3)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pop_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                            <h2>#</h2>
-                                            <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(4)" onmouseover="qweqwe(4)" onmouseout="qweqwe(4)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(4)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pop_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                            <h2>#</h2>
-                                            <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(5)" onmouseover="qweqwe(5)" onmouseout="qweqwe(5)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(5)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pop_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                            <h2>#</h2>
-                                            <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                    <h1>PANTS</h1>
+                    <div class="goods">
+                        <ul id="pants">
+                        </ul>
                     </div>
-                    <div class="pants">
-                        <h1>PANTS</h1>
-                        <div class="goods_list">
-                            <div>
-                                <img onclick="like(6)" onmouseover="qweqwe(6)" onmouseout="qweqwe(6)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(6)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                            <h2>#</h2>
-                                            <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(7)" onmouseover="qweqwe(7)" onmouseout="qweqwe(7)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(7)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(8)" onmouseover="qweqwe(8)" onmouseout="qweqwe(8)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(8)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                    </a>
-                            </div>
-                            <div>
-                                <img onclick="like(9)" onmouseover="qweqwe(9)" onmouseout="qweqwe(9)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(9)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(10)" onmouseover="qweqwe(10)" onmouseout="qweqwe(10)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(10)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(11)" onmouseover="qweqwe(11)" onmouseout="qweqwe(11)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(11)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                    <h1>T-SHIRTS</h1>
+                    <div class="goods">
+                        <ul id="t_shirts">
+                        </ul>
                     </div>
-                    <div class="t_shirts">
-                        <h1>T-SHIRTS</h1>
-                        <div class="goods_list">
-                            <div>
-                                <img onclick="like(12)" onmouseover="qweqwe(12)" onmouseout="qweqwe(12)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(12)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(13)" onmouseover="qweqwe(13)" onmouseout="qweqwe(13)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(13)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                    <h2>#</h2>
-                                    <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(14)" onmouseover="qweqwe(14)" onmouseout="qweqwe(14)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(14)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(15)" onmouseover="qweqwe(15)" onmouseout="qweqwe(15)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(15)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(16)" onmouseover="qweqwe(16)" onmouseout="qweqwe(16)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(16)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(17)" onmouseover="qweqwe(17)" onmouseout="qweqwe(17)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(17)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img pants_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hoodies">
-                        <h1>HOODIES</h1>
-                        <div class="goods_list">
-                            <div>
-                                <img onclick="like(18)" onmouseover="qweqwe(18)" onmouseout="qweqwe(18)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(18)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img hoodies_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(19)" onmouseover="qweqwe(19)" onmouseout="qweqwe(19)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(19)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img hoodies_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(20)" onmouseover="qweqwe(20)" onmouseout="qweqwe(20)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(20)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img hoodies_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(21)" onmouseover="qweqwe(21)" onmouseout="qweqwe(21)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(21)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img hoodies_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(22)" onmouseover="qweqwe(22)" onmouseout="qweqwe(22)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(22)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img hoodies_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <img onclick="like(23)" onmouseover="qweqwe(23)" onmouseout="qweqwe(23)" class="heart_img" src="https://a.lmcdn.ru/static/22.12.15_1/assets/heart.99c595b3.svg" alt="">
-                                <a onclick="open_img(23)" href="goods.html">
-                                    <div class="goods">
-                                        <div class="center">
-                                            <img class="goods_img hoodies_img" src="images/maha_wanted.jpg" alt="">
-                                        </div>
-                                        <h2>#</h2>
-                                        <h4>#</h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                    <h1>HOODIES</h1>
+                    <div class="goods">
+                        <ul id="hoodies">
+                        </ul>
                     </div>
                 </section>
             </div>
