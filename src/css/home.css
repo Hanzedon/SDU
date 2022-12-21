@@ -4,31 +4,40 @@
 }
 
 .background_img {
-    width: 1519px;
+    width: 100%;
 }
 
-ul {
-    list-style-type: none;
+#pants, #t_shirts, #hoodies {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    min-width: 100%;
 }
 
-.product-card {
-    /* max-width: 100px; */
+.icon {
+    position: absolute;
 }
 
-.product-card img {
-    width: 120px;
-    padding: 2vh 1vw;
+.svg-icon {
+    width: 20px;
+    fill: #ff0 !;
 }
 
-.probuct {
-    display: flex;
-    justify-content: center;
-    max-width: 100%;
+svg {
+    fill: #000000;
 }
 
-.goods {
-    display: flex;
-    justify-content: space-between;
+.goods:hover .svg-icon {
+    fill: red;
+}
+
+.product {
+    min-width: 200px;
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden;
+    height: 250px;
+}
+
+.product img {
+    height: 80%;
 }
