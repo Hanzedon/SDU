@@ -147,6 +147,12 @@ let products = [
 }
 ];
 
+let in_accounts;
+function poopoopipi() {
+    in_accounts = true;
+}
+
+
 // HOME
 function loadGoods() {
     let pants = '';
@@ -175,10 +181,35 @@ function loadGoods() {
     $('#hoodies').append(hoodies);
 }
 
+function loadAccounts() {
+    in_accounts = false;
+}
+
+function like_heart(n) {
+    if( in_accounts ) {
+        sign_in();
+    }
+    else {
+    }
+}
+
+function like_out() {
+    let temp_arr = document.getElementsByClassName('like_src')
+    for( let i = 0; i < temp_arr.length; i++ ) {
+        temp_arr[i].src = "images/not_like.svg";
+    }
+}
+function like_over() {
+    let temp_arr = document.getElementsByClassName('like_src')
+    for( let i = 0; i < temp_arr.length; i++ ) {
+        temp_arr[i].src = "images/like.svg";
+    }
+}
+
 function makeProduct(item) {
-return  '<div class="product" onmouseover="like_heart()">' +
-            '<div class="icon-like">' +
-                '<img src="https://a.lmcdn.ru/static/22.12.19/assets/heart.99c595b3.svg"></img>' +
+return  '<div class="product">' +
+            '<div class="icon-like" onclick="like_heart(' + item.id + ')" onmouseout="like_out()" onmouseover="like_over()">' +
+                '<img class="like_src" src="images/not_like.svg"></img>' +
             '</div>' +
             '<div class="" onclick="saveID(' + item.id + ')">' +
                 '<div class="goods-img">' +
@@ -206,19 +237,19 @@ function saveID(n) {
 function loadProduct() {
     let index = localStorage.getItem('id');
     $("#product").append(
-                    '<div class="goods">' +
-                        '<div class="goods-img">' +
-                            '<img class="" src="' + products[index].photo + '" alt="Goods Photo">' +
-                        '</div>' +
-                        '<div class="about">' +
-                            '<h3>' + products[index].name + '</h3>' +
-                            '<p>' + products[index].price + '</p>' +
-                        '</div>' +
-                    '</div>'
+        '<div class="goods">' +
+            '<div class="goods-img">' +
+                '<img class="" src="' + products[index].photo + '" alt="Goods Photo">' +
+            '</div>' +
+            '<div class="about">' +
+                '<h3>' + products[index].name + '</h3>' +
+                '<p>' + products[index].price + '</p>' +
+            '</div>' +
+        '</div>'
     );
 }
 
-
+// SIGN UP
 function submit() {
     let user_name = $('#user_name').val();
     let first_name = $('#first_name').val();
@@ -226,117 +257,135 @@ function submit() {
     let email = $('#email').val();
     let password1 = $('#password1').val();
     let password2 = $('#password2').val();
-    let boo_regiter = true;
     let user_array = getUsers();
+    let boo_regiter = true;
 
-    if( user_name.length < 5 || user_name == '' ) {
+    if( user_name.length < 5 ) {
         document.getElementById('user_name').style = 'background-color: rgb(255, 0, 0, 0.4)';
-        document.getElementById("user_name").placeholder = "jfiejf";
+        document.getElementById("user_name").placeholder = "Ne pravilno";
+        document.getElementById("user_name").value = "";
         boo_regiter = false;
     }
     else {
-        // let index = qwerqwer.indexOf(user_name);
-        // console.log( index );
+        let index = 0;
+        user_array.forEach((users) => {
+            if( user_name === users.user_name ) {
+                index = -1;
+            }
+        });
 
-        // if( index === -1 && user_array.length > 0 ) {
-        //     console.log( "INDEXINDEX" );
-        //     document.getElementById('user_name').style = 'background-color: rgb(255, 0, 0, 0.4)';
-        //     document.getElementById("user_name").placeholder = "NickName ERROR";
-        //     boo_regiter = false;
-        // }
-        // else {
+        if( index === -1 && user_array.length > 0 ) {
+            document.getElementById('user_name').style = 'background-color: rgb(255, 0, 0, 0.4)';
+            document.getElementById("user_name").placeholder = "NickName ERROR";
+            document.getElementById("user_name").value = "";
+            boo_regiter = false;
+        }
+        else {
             document.getElementById('user_name').style = 'background-color: rgb(0, 0, 0, 0.1)';
-            boo_regiter = true;
-        // }
+        }
     }
     if( first_name.length < 5 || first_name == '' ) {
         document.getElementById('first_name').style = 'background-color: rgb(255, 0, 0, 0.4)';
         document.getElementById("first_name").placeholder = "jfiejf";
+        document.getElementById("first_name").value = "";
         boo_regiter = false;
     }
     else {
         document.getElementById('first_name').style = 'background-color: rgb(0, 0, 0, 0.1)';
-        boo_regiter = true;
     }
     if( last_name.length < 5 || last_name == '' ) {
         document.getElementById('last_name').style = 'background-color: rgb(255, 0, 0, 0.4)';
         document.getElementById("last_name").placeholder = "jfiejf";
+        document.getElementById("last_name").value = "";
         boo_regiter = false;
     }
     else {
         document.getElementById('last_name').style = 'background-color: rgb(0, 0, 0, 0.1)';
-        boo_regiter = true;
     }
     if( email.length < 5 || email == '' || email.match('@') ) {
         document.getElementById('email').style = 'background-color: rgb(255, 0, 0, 0.4)';
         document.getElementById("email").placeholder = "jfiejf";
+            document.getElementById("email").value = "";
         boo_regiter = false;
     }
     else {
         document.getElementById('email').style = 'background-color: rgb(0, 0, 0, 0.1)';
-        boo_regiter = true;
     }
     if( password1.length < 5 || password1 == '' ) {
         document.getElementById('password1').style = 'background-color: rgb(255, 0, 0, 0.4)';
         document.getElementById("password1").placeholder = "jfiejf";
+            document.getElementById("password1").value = "";
         boo_regiter = false;
     }
     else {
         document.getElementById('password1').style = 'background-color: rgb(0, 0, 0, 0.1)';
-        boo_regiter = true;
     }
     if( password2.length < 5 || password2 == '' ) {
         document.getElementById('password2').style = 'background-color: rgb(255, 0, 0, 0.4)';
         document.getElementById("password2").placeholder = "jfiejf";
+            document.getElementById("password2").value = "";
         boo_regiter = false;
     }
     else {
         document.getElementById('password2').style = 'background-color: rgb(0, 0, 0, 0.1)';
-        boo_regiter = true;
-    }
-    if( password2 == '' || password1 != password2 ) {
-        document.getElementById('password1').style = 'background-color: rgb(255, 0, 0, 0.4)';
-        document.getElementById("password1").placeholder = "jfiejf";
-        boo_regiter = false;
-    }
-    else {
-        document.getElementById('password1').style = 'background-color: rgb(0, 0, 0, 0.1)';
-        boo_regiter = true;
+        if( password1 != password2 ) {
+            document.getElementById('password2').style = 'background-color: rgb(255, 0, 0, 0.4)';
+            document.getElementById("password2").placeholder = "Ne";
+                document.getElementById("password2").value = "";
+            boo_regiter = false;
+        }
+        else {
+            document.getElementById('password2').style = 'background-color: rgb(0, 0, 0, 0.1)';
+        }
     }
 
-    // console.log( wqerqwer[0].name );
+    if( boo_regiter ) {
+        user_array.push(
+            {
+                id: 1 + user_array.length,
+                user_name: user_name,
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                password: password1
+            }
+        );
+        localStorage.setItem('users', JSON.stringify(user_array));
 
-    // user_array.push(
-    //     [
-    //         {
-    //             id: 1 + user_array.length,
-    //             user_name: user_name,
-    //             first_name: first_name,
-    //             last_name: last_name,
-    //             email: email,
-    //             password: password1
-    //         }
-    //     ]
-    // );
+        let wishlist_array = getWishlist();
+        wishlist_array.push(
+            user_array.length-1[
+                {}
+            ]
+        );
 
-    // localStorage.setItem('users', JSON.stringify(user_array));
+        let temp = wishlist_array[0];
+        console.log(temp);
+        temp.push(
+            {12, 43, 54, 76, 676]
+        );
+        wishlist_array[0].push(temp);
+
+        localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
+
+        window.location.href = 'account.html';
+    }
 }
-
-// console.log( JSON.parse(localStorage.getItem('users')) );
 
 function getUsers() {
     const temp = localStorage.getItem('users');
     if( temp !== null ) {
-        let qweqweqwe = JSON.parse(temp);
-        console.log( JSON.parse(localStorage.getItem('users'))[0].user_name );
-        return qweqweqwe;
+        return JSON.parse(temp);
     }
     return [];
 }
 
-function setUsers() {
-    let temp = getUsers();
-    localStorage.setItem('users', JSON.stringify(temp));
+function getWishlist() {
+    const temp = localStorage.getItem('wishlist');
+    if( temp !== null ) {
+        return JSON.parse(temp);
+    }
+    return [];
 }
 
 // LINKS
