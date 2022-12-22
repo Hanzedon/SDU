@@ -258,7 +258,14 @@ function submit() {
     let password1 = $('#password1').val();
     let password2 = $('#password2').val();
     let user_array = getUsers();
+    let wishlist_array = getWishlist();
     let boo_regiter = true;
+    
+    let temp = wishlist_array[0].product_id;
+    temp.push(4
+    );
+    wishlist_array[0].product_id.push(temp);
+    console.log( wishlist_array[0] );
 
     if( user_name.length < 5 ) {
         document.getElementById('user_name').style = 'background-color: rgb(255, 0, 0, 0.4)';
@@ -352,21 +359,15 @@ function submit() {
         );
         localStorage.setItem('users', JSON.stringify(user_array));
 
-        // let wishlist_array = getWishlist();
-        // wishlist_array.push(
-        //     user_array.length-1[
-        //         {}
-        //     ]
-        // );
-        // let temp = wishlist_array[0];
-        // console.log(temp);
-        // temp.push(
-        //     [12, 43, 54, 76, 676]
-        // );
-        // wishlist_array[0].push(temp);
-        // localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
+        wishlist_array.push(
+            {
+                user_id: user_array.length,
+                product_id: [1, 5, 10]
+            }
+        );
+        localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
 
-        window.location.href = 'account.html';
+        // window.location.href = 'account.html';
     }
 }
 
