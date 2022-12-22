@@ -352,21 +352,19 @@ function submit() {
         );
         localStorage.setItem('users', JSON.stringify(user_array));
 
-        let wishlist_array = getWishlist();
-        wishlist_array.push(
-            user_array.length-1[
-                {}
-            ]
-        );
-
-        let temp = wishlist_array[0];
-        console.log(temp);
-        temp.push(
-            {12, 43, 54, 76, 676]
-        );
-        wishlist_array[0].push(temp);
-
-        localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
+        // let wishlist_array = getWishlist();
+        // wishlist_array.push(
+        //     user_array.length-1[
+        //         {}
+        //     ]
+        // );
+        // let temp = wishlist_array[0];
+        // console.log(temp);
+        // temp.push(
+        //     [12, 43, 54, 76, 676]
+        // );
+        // wishlist_array[0].push(temp);
+        // localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
 
         window.location.href = 'account.html';
     }
