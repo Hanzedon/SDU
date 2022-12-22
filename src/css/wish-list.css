@@ -1,0 +1,23 @@
+.wish_list_wrapper {
+    background-color: rgb(240, 240, 240);
+    text-align: center;
+    padding: 150px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.goods-list {
+    background-color: #fff;
+    border: 2px solid #000;
+    display: flex;
+    border-radius: 16px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.goods-list img {
+    margin-right: 20px;
+    border-radius: 10px
+}

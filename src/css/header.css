@@ -34,3 +34,7 @@ header .links path {
     fill: #ffffff;
     pointer-events: all;
 }
+
+.red {
+    fill: red !important;
+}

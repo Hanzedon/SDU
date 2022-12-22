@@ -1,15 +1,47 @@
 .sign_in {
-    z-index: 10;
-    display: flex;
+    background-color: rgba(0, 0, 0, .8);
     justify-content: center;
     position: fixed;
     width: 100%;
     height: 100%;
-    padding-top: 250px;
+    z-index: 10;
     display: none;
-    background-color: rgba(0, 0, 0, .8);
 }
 
-.sign_in img {
-    width: 300px;
+.log-in {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 17%;
+    max-height: 100px;
+    width: 200px;
+}
+
+.close {
+    background-color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 3px 0 3px;
+    margin: -7px 0 2px -7px;
+}
+
+.close {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.close:hover {
+    background-color: #ff2020;
+}
+
+.fill {
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 10px;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
 }
