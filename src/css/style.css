@@ -6,6 +6,7 @@
 @import url("wish-list.css");
 @import url("sign-up.css");
 @import url("account.css");
+@import url("basket.css");
 
 * {
     margin: 0;

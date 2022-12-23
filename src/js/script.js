@@ -148,56 +148,168 @@ let products = [
 ];
 
 function poopoopipi() {
-    localStorage.setItem('in_account', false);
+    console.log( "tcfgvhbjnkrtfygbhunjimkrtfyguhnjirtfvgybhunjk" );
+    localStorage.setItem('in_account', 0);
 }
-
-function loadAccounts() {
-    console.log( "ukyjfghcjhoiuyfyhg" );
-    // localStorage.setItem('in_account', true);
+function pipipoopoo() {
+    localStorage.setItem('in_account', 1);
 }
 
 // GOODS
-function saveID(n) {
-    localStorage.setItem('id', n-1);
-    window.location = "goods.html";
-}
-
 function loadProduct() {
     let index = localStorage.getItem('id');
     $("#product").append(
+        '<div class="goods">' +
             '<div class="goods-img">' +
                 '<img class="" src="' + products[index].photo + '" alt="Goods Photo">' +
             '</div>' +
+            '<hr>' +
             '<div class="about">' +
-                '<h3>' + products[index].name + '</h3>' +
-                '<p>' + products[index].price + '</p>' +
-            '</div>'
+                '<h2>MODEL: ' + products[index].name + '</h3>' +
+                '<h3>PRICE: ' + products[index].price + '$</h3>' +
+                '</div>' +
+            '<button class="bttn_to_basker" onclick="to_basket(' + products[index].id + ')" >INTO A BASKET</button>' +
+        '</div>'
     );
 }
 
 // WISHLIST
-function loadWihlist() {
+function loadWishlist() {
     let wishlist_array  = getWishlist();
     let user_id = localStorage.getItem('user-id');
     let len = wishlist_array[user_id-1].product_id.length;
 
     if( len == 0) {
         $("#goods_wishlist").append(
-            '<h1>WISHLIST ID EMPTY</h1>'
+            '<h1>WISHLIST IS EMPTY</h1>'
         );
     }
     else {
         wishlist_array[user_id-1].product_id.forEach((wishlist) => {
             $("#goods_wishlist").append(
-                '<div class="goods-list">' +
+                '<div class="goods-list delete" id="wishlist' + products[wishlist-1].id + '">' +
                     '<div class="wishlist_img">' +
-                        '<img src="' + products[wishlist].photo + '" alt="">' +
+                        '<img src="' + products[wishlist-1].photo + '" alt="">' +
                     '</div>' +
-                    '<h1>iuevjnkr</h1>' +
+                    '<div class="about-wishlist">' +
+                        '<div class="d"></div>' + 
+                        '<h2>Model: ' + products[wishlist-1].name + '</h2>' +
+                        '<h3>PRICE: ' + products[wishlist-1].price + '$</h3>' +
+                    '</div>' +
+                    '<div class="btns">' +
+                    '<button onclick="delete_wishlist(' + products[wishlist-1].id + ')" class="delete-btn")>DELETE</button>' +
+                    '<button onclick="to_basket(' + products[wishlist-1].id + ')" class="add-btn")>ADD TO CART</button>' +
+                    '</div>' +
                 '</div>'
             );
         })
     }
+}
+
+function delete_wishlist(n) {
+    let user_id = localStorage.getItem('user-id');
+    let wishlist_array = getWishlist();
+    let temp_array = wishlist_array[user_id-1].product_id;
+
+    for( let i = 0; i < temp_array.length; i++ ) {
+        if( n == temp_array[i] ) {
+            index = -1;
+            wishlist_array[user_id-1].product_id.splice(i, 1);
+            document.getElementById('wishlist'+n).style = 'display:none';
+            break;
+        }
+    }
+    if( temp_array.length == 0 ) {
+        $("#goods_wishlist").append(
+            '<h1>WISHLIST IS EMPTY</h1>'
+        );
+    }
+    localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
+}
+
+// CART
+function loadBasket() {
+    let basket_array  = getCart();
+    let user_id = localStorage.getItem('user-id');
+    let len = basket_array[user_id-1].product_id.length;
+    if( len == 0 ) {
+        $("#goods_basket").append(
+            '<h1>CART IS EMPTY</h1>'
+        );
+    }
+    else {
+        console.log( basket_array[user_id-1] );
+        let i = 0;
+        let div = '<h3>CART</h3>';
+        basket_array[user_id-1].product_id.forEach((basket) => {
+            i++;
+            div += 
+            '<div class="goods-list">' +
+                '<h3>Model: ' + products[basket-1].name + '</h3>' +
+                '<div class="bttns">' +
+                    '<button class="around-5" onclick="delete_basket(' + products[basket-1].id + ')">+</button>' +
+                    '<h3 class="around-5">' + basket_array[user_id-1].count_goods[i] + '</h3>' +
+                    '<button class="around-5" onclick="delete_basket(' + products[basket-1].id + ')">-</button>' +
+                    '<button class="around-5" onclick="delete_basket(' + products[basket-1].id + ')">DELETE</button>' +
+                '</div>' +
+            '</div>'
+        });
+        div += 
+            '<h3>TOTAL</h3>';
+
+        $("#goods_basket").append(div);
+    }
+}
+
+function to_basket(n) {
+    let in_account = localStorage.getItem('in_account');
+    if( in_account == 0 ) {
+        sign_in();
+    }
+    else {
+        let user_id = localStorage.getItem('user-id');
+        let basket_array = getCart();
+        let basket = basket_array[user_id-1].product_id;
+        console.log( basket );
+
+        let check = 0;
+        let index;
+        for( let i = 0; i < basket.length; i++ ) {
+            if( n == basket[i] ) {
+                check = -1;
+                index = i;
+                break;
+            }
+        }            
+
+        if( check == -1 ) {
+            let temp_count = basket_array[user_id-1].count_goods[index];
+            basket_array[user_id-1].count_goods[index] = temp_count+1;
+        }
+        else {
+            console.log( "IN CART" );
+            basket_array[user_id-1].product_id.push(n);
+            basket_array[user_id-1].count_goods.push(temp);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(basket_array));
+    }
+}
+
+function delete_basket(n) {
+    let user_id = localStorage.getItem('user-id');
+    let basket_array = getWishlist();
+    let temp_array = basket_array[user_id-1].product_id;
+
+    for( let i = 0; i < temp_array.length; i++ ) {
+        if( n == temp_array[i] ) {
+            index = -1;
+            basket_array[user_id-1].product_id.splice(i, 1);
+            basket_array[user_id-1].count_goods.splice(i, 1);
+            break;
+        }
+    }
+    localStorage.setItem('cart', JSON.stringify(basket_array));
 }
 
 // SIGN UP
@@ -308,6 +420,16 @@ function submit() {
                 product_id: []
             }
         );
+        let basket_array = getCart();
+        basket_array.push(
+            {
+                user_id: user_array.length,
+                product_id: [],
+                count_goods: []
+            }
+        );
+
+        localStorage.setItem('cart', JSON.stringify(basket_array));
         localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
         localStorage.setItem('users', JSON.stringify(user_array));
         localStorage.setItem('user-id', JSON.stringify(user_array[user_array.length-1].id));
@@ -350,22 +472,25 @@ function qwerty(a, b) {
 
 function dickies_click() {
     let in_account = localStorage.getItem("in_account");
-    if( in_account ) window.location.href = 'index.html';
-    else window.location.href = 'account.html';
+    if( in_account == 0 ) {
+        window.location.href = 'index.html';
+    }
+    else {
+        window.location.href = 'account.html';
+    }
 }
 
 let boo_sign_in = true;
 function sign_in(n) {
     let in_account = localStorage.getItem("in_account");
-    console.log( in_account );
-    if( in_account ) {
+    if( in_account == 0 ) {
         if( boo_sign_in ) document.getElementById('sign_in_close').style = "display: flex;"
         else document.getElementById('sign_in_close').style = "display: none;"
         boo_sign_in = !boo_sign_in
     }
     else if( n == 1 ) window.location.href = 'wish-list.html';
-    else if( n == 2 ) window.location.href = 'account.html';
-    else if( n ==3  ) window.location.href = 'account.html';
+    else if( n == 2 ) window.location.href = 'basket.html';
+    // else if( n == 3  ) window.location.href = 'account.html';
 }
 
 // LOAD
@@ -395,12 +520,10 @@ function loadGoods() {
     $('#t_shirts').append(t_shirts);
     $('#hoodies').append(hoodies);
 }
-function loadAccounts() {
-    let user_id = localStorage.getItem('user-id');
-}
+
 function like_heart(n) {
     let in_account = localStorage.getItem("in_account");
-    if( in_account ) {
+    if( in_account == 0 ) {
         sign_in();
     }
     else {
@@ -415,18 +538,18 @@ function like_heart(n) {
                 wishlist_array[user_id-1].product_id.splice(i, 1);
                 break;
             }
-        }            
-    
+        }
+
+        console.log( n );
         if( index == 0 ) {
             console.log( "tfvygbhjnkml,;" );
             document.getElementById('goods-id-'+n).src = "images/like.svg";
             wishlist_array[user_id-1].product_id.push(n);
         }
         else {
-    
             document.getElementById('goods-id-'+n).src = "images/not_like.svg";
         }
-    
+
         localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
     }
 }
@@ -451,22 +574,25 @@ function like_over(n) {
 }
 function makeProduct_in(item) {
     let img = "images/not_like.svg";
-    let wishlist_array = getWishlist();
-    let user_id = localStorage.getItem('user-id');
-    let temp_array = wishlist_array[user_id-1].product_id;
-    let index = 0;
-    for( let i = 0; i < temp_array.length; i++ ) {
-        if( item.id == temp_array[i] ) {
-            index = -1;
+    let in_account = localStorage.getItem('in_account');
+    if( in_account == 1 ) {
+        let wishlist_array = getWishlist();
+        let user_id = localStorage.getItem('user-id');
+        let temp_array = wishlist_array[user_id-1].product_id;
+        let index = 0;
+        for( let i = 0; i < temp_array.length; i++ ) {
+            if( item.id == temp_array[i] ) {
+                index = -1;
+            }
         }
-    }
-    if( index == -1 ) {
-        img = "images/like.svg";
+        if( index == -1 ) {
+            img = "images/like.svg";
+        }
     }
 
 return  '<div class="product">' +
             '<div class="icon-like" onclick="like_heart(' + item.id + ')" onmouseout="like_out(' + item.id + ')" onmouseover="like_over(' + item.id + ')">' +
-                '<img id="goods-id-' + item.id + '" src="'+img+'"></img>' +
+                '<img id="goods-id-' + item.id + '" src="' + img + '"></img>' +
             '</div>' +
             '<div onclick="saveID(' + item.id + ')">' +
                 '<div class="goods-img">' +
@@ -478,7 +604,17 @@ return  '<div class="product">' +
         '</div>';
 }
 
-//
+function loadAccounts() {
+    let user_id = localStorage.getItem('user-id');
+}
+
+// 
+function saveID(n) {
+    localStorage.setItem('id', n-1);
+    window.location = "goods.html";
+}
+
+
 function getUsers() {
     const temp = localStorage.getItem('users');
     if( temp !== null ) {
@@ -489,6 +625,14 @@ function getUsers() {
 
 function getWishlist() {
     const temp = localStorage.getItem('wishlist');
+    if( temp !== null ) {
+        return JSON.parse(temp);
+    }
+    return [];
+}
+
+function getCart() {
+    const temp = localStorage.getItem('cart');
     if( temp !== null ) {
         return JSON.parse(temp);
     }
