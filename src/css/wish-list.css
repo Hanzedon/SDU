@@ -4,20 +4,23 @@
     padding: 150px;
 }
 
-ul {
-    list-style-type: none;
-}
-
 .goods-list {
     background-color: #fff;
     border: 2px solid #000;
     display: flex;
     border-radius: 16px;
-    padding: 10px;
     margin: 10px;
+    padding: 20px;
 }
 
 .goods-list img {
     margin-right: 20px;
     border-radius: 10px
+}
+
+.wishlist_img {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    width: 200px;
 }

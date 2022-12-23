@@ -1,24 +1,24 @@
+.goods_wrapper {
+    height: 100%;
+}
+
 #product {
     padding-top: 190px;
     display: flex;
-    align-items: center;
-}
-
-#product .goods {
-    width: 100%;
-    display: flex;
     justify-content: space-around;
-    flex-direction: column;
-    justify-content: flex-end;
 }
 
 #product .goods-img {
     display: flex;
     justify-content: center;
-    margin: 0 100px 0 200px;
-    height: 300px;
+    margin: 0 100px 0 150px;
+    height: 350px;
 }
 
 .about {
     width: 800px;
+}
+
+.goods-img img {
+    width: fit-content;
 }
