@@ -7,9 +7,17 @@
     width: 100%;
 }
 
+.wrapper {
+    width: 100%;
+}
+
 #pants, #t_shirts, #hoodies {
     display: flex;
     justify-content: space-around;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, )); */
+    min-width: 100px;
+    margin: 20px;
     min-width: 100%;
     margin-bottom: 50px;
 }

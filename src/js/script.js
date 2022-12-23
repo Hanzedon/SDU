@@ -183,42 +183,37 @@ function loadGoods() {
 
 function loadAccounts() {
     in_accounts = false;
+    let user_id = localStorage.getItem('user-id');
 }
 
-function like_heart(n) {
+function like_heart(n, index_heart) {
     if( in_accounts ) {
         sign_in();
     }
     else {
-    }
-}
+        let user_id = localStorage.getItem('user-id');
+        let wishlist_array = getWishlist();
+        let temp_array = wishlist_array[user_id-1].product_id;
 
-function like_out() {
-    let temp_arr = document.getElementsByClassName('like_src')
-    for( let i = 0; i < temp_arr.length; i++ ) {
-        temp_arr[i].src = "images/not_like.svg";
-    }
-}
-function like_over() {
-    let temp_arr = document.getElementsByClassName('like_src')
-    for( let i = 0; i < temp_arr.length; i++ ) {
-        temp_arr[i].src = "images/like.svg";
-    }
-}
+        let index = 0;
+        for( let i = 0; i < temp_array.length; i++ ) {
+            console.log( temp_array[i] );
+            if( n == temp_array[i] ) {
+                index = -1;
+            }
+        }            
 
-function makeProduct(item) {
-return  '<div class="product">' +
-            '<div class="icon-like" onclick="like_heart(' + item.id + ')" onmouseout="like_out()" onmouseover="like_over()">' +
-                '<img class="like_src" src="images/not_like.svg"></img>' +
-            '</div>' +
-            '<div class="" onclick="saveID(' + item.id + ')">' +
-                '<div class="goods-img">' +
-                    '<img class="" src="' + item.photo + '" alt="Goods Photo">' +
-                '</div>' +
-                '<h3>' + item.name + ' ' + item.color + '</h3>' +
-                '<p>' + item.price + '$</p>' +
-            '</div>' +
-        '</div>';
+        // if( index == 0 ) {
+        //     document.getElementById('goods-id-'+n).src = "images/like.svg";
+        //     wishlist_array[user_id-1].product_id.push(n);
+        // }
+        // else {
+        //     document.getElementById('goods-id-'+n).src = "images/not_like.svg";
+        // }
+
+        localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
+
+    }
 }
 
 function shuffleArray(array) {
@@ -226,6 +221,30 @@ function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+}
+
+function like_out(n) {
+    document.getElementById('goods-id-'+n).src = "images/not_like.svg";
+}
+function like_over(n) {
+    document.getElementById('goods-id-'+n).src = "images/like.svg";
+}
+
+function makeProduct(item) {
+    let wishlist_array = localStorage.getItem('wishlist');
+    
+return  '<div class="product">' +
+            '<div class="icon-like" onclick="like_heart(' + item.id + ')" onmouseout="like_out(' + item.id + ')" onmouseover="like_over(' + item.id + ')">' +
+                '<img id="goods-id-' + item.id + '" src="images/not_like.svg"></img>' +
+            '</div>' +
+            '<div onclick="saveID(' + item.id + ')">' +
+                '<div class="goods-img">' +
+                    '<img src="' + item.photo + '" alt="Goods Photo">' +
+                '</div>' +
+                '<h3>' + item.name + ' ' + item.color + '</h3>' +
+                '<p>' + item.price + '$</p>' +
+            '</div>' +
+        '</div>';
 }
 
 // GOODS
@@ -258,14 +277,7 @@ function submit() {
     let password1 = $('#password1').val();
     let password2 = $('#password2').val();
     let user_array = getUsers();
-    let wishlist_array = getWishlist();
     let boo_regiter = true;
-    
-    let temp = wishlist_array[0].product_id;
-    temp.push(4
-    );
-    wishlist_array[0].product_id.push(temp);
-    console.log( wishlist_array[0] );
 
     if( user_name.length < 5 ) {
         document.getElementById('user_name').style = 'background-color: rgb(255, 0, 0, 0.4)';
@@ -357,17 +369,17 @@ function submit() {
                 password: password1
             }
         );
-        localStorage.setItem('users', JSON.stringify(user_array));
-
+        let wishlist_array = getWishlist();
         wishlist_array.push(
             {
                 user_id: user_array.length,
-                product_id: [1, 5, 10]
+                product_id: []
             }
         );
         localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
-
-        // window.location.href = 'account.html';
+        localStorage.setItem('users', JSON.stringify(user_array));
+        localStorage.setItem('user-id', JSON.stringify(user_array[user_array.length-1].id));
+        window.location.href = 'account.html';
     }
 }
 
