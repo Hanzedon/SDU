@@ -9,7 +9,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
-    <body onload="poopoopipi()">
+    <body>
         <section class="sign_in" id="sign_in_close">
             <div class="log-in">
                 <button onclick="sign_in()" class="close">X</button>
@@ -53,19 +53,34 @@
                     </div>
                 </div>
             </header>
-            <div class="wrapper">
-                <img class="background_img" src="images/background.jpg" alt="">
-                <section class="category">
-                    <h1>PANTS</h1>
-                    <div id="pants">
+            <div class="contacts_wrapper">
+                <div class="all">
+                    <div class="container">
+                        <div class="content">
+                            <div class="right-side1">
+                                <div class="topic-text">Send us a message</div>
+                                <p>If you have any questions or suggestions, please fill out the form below.</p>
+                                <form action="#">
+                                    <div class="input-box">
+                                        <input type="text" name="name" id="contacts-name" placeholder="Enter your name" required>
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="text" name="email" id="contacts-email" placeholder="Enter your email" required>
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="text" name="phone" id="contacts-phone" placeholder="Enter your phone number" required>
+                                    </div>
+                                    <div class="input-box message-box">
+                                        <textarea id="contacts-message" placeholder="Message" required></textarea>
+                                    </div>
+                                    <div class="button-cont">
+                                        <input type="button" onclick="log_out()" value="Send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <h1>T-SHIRTS</h1>
-                    <div id="t_shirts">
-                    </div>
-                    <h1>HOODIES</h1>
-                    <div id="hoodies">
-                    </div>
-                </section>
+                </div>
             </div>
             <footer>
                 <div class="for_logo_dickies">

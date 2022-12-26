@@ -7,12 +7,24 @@
 @import url("sign-up.css");
 @import url("account.css");
 @import url("basket.css");
+@import url("about_account.css");
+@import url("contacts.css");
 
 * {
     margin: 0;
     padding: 0;
     font-family: roboto, arial, helvetica;
-    /* text-decoration: none; */
+}
+
+#feedback {
+    margin: 25px;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+#feedback:hover {
+    color: rgb(64, 64, 255);
 }
 
 .main {

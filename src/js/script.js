@@ -3,7 +3,7 @@ let products = [
     id: 1,
     type: "pant",
     photo: "images/Dickies Loose Fit Double Knee Work Pant Black.jpg",
-    name: "Loose ",
+    name: "Dickies Double Knee Loose Fit",
     color: "Black",
     price: 50
 },
@@ -35,7 +35,7 @@ let products = [
     id: 5,
     type: "pant",
     photo: "images/Red Kap Industrial Cargo Pant Black.jpg",
-    name: "Red Kap ",
+    name: "Red Kap rtyu",
     color: "Black",
     price: 80
 },
@@ -148,11 +148,12 @@ let products = [
 ];
 
 function poopoopipi() {
-    console.log( "tcfgvhbjnkrtfygbhunjimkrtfyguhnjirtfvgybhunjk" );
     localStorage.setItem('in_account', 0);
+    loadGoods();
 }
 function pipipoopoo() {
     localStorage.setItem('in_account', 1);
+    loadGoods();
 }
 
 // GOODS
@@ -227,6 +228,104 @@ function delete_wishlist(n) {
     localStorage.setItem('wishlist', JSON.stringify(wishlist_array));
 }
 
+// ABOUT ACCOUNT
+function loadAboutAccount() {
+    console.log( "LOAD ABOUT ACCOUNT" );
+    let user_id = localStorage.getItem('user-id');
+    let user_array = getUsers();
+    let add = "";
+
+    let about = ['User Name', 'First Name', 'Last Name', 'Email Address', 'Password'];
+    let user = [
+        user_array[user_id-1].user_name,
+        user_array[user_id-1].first_name,
+        user_array[user_id-1].last_name,
+        user_array[user_id-1].email,
+        user_array[user_id-1].password];
+
+    for( let i = 0; i < 5; i++ ) {
+        add += (
+            '<div class="about_list">' +
+                '<div class="about_list_1">' +
+                    '<div class="about_list_2">' +
+                        '<h2 class="qewrqewr" id="edit_id_">' + about[i] + ':&nbsp</h2>' +
+                        '<h2 class="h2_about" id="about_id_' + i + '">' + user[i] + '</h2>' +
+                        '<input class="input_edit" id="input_id_' + i + '" type="text">' +
+                    '</div>' +
+                    '<button onclick="edit(' + i + ')" class="edit_bttn" id="edit_bttn_' + i + '">EDIT</button>' +
+                '</div>' +
+                '<hr>' +
+            '</div>'
+        );
+    }
+    add += (
+        '<div class="about_list">' +
+            '<div class="about_list_1">' +
+                '<button onclick="log_out()" class="edit_bttn">LOG OUT</button>' +
+            '<div/>' +
+        '</div>'
+        );
+
+    $("#about_account").append(add);
+}
+
+function log_out() {
+    window.location.href = 'index.html';
+}
+
+let qwerqwerqewr = true;
+function edit(n) {
+    if( qwerqwerqewr ) {
+        for( let i = 0; i < 5; i++ ) {
+            if( i == n ) {
+                document.getElementsByClassName('h2_about')[i].style = 'display: none;';
+                document.getElementsByClassName('input_edit')[i].style = 'display: block;';
+            }
+            else {
+                document.getElementsByClassName('h2_about')[i].style = 'display: block;';
+                document.getElementsByClassName('input_edit')[i].style = 'display: none;';
+            }
+        }
+        qwerqwerqewr = !qwerqwerqewr;
+    }
+    else {
+        let temp = document.getElementsByClassName('input_edit')[n].value;;
+        if( temp == "" ) {
+            alert('Empty');
+            for( let i = 0; i < 5; i++ ) {
+                if( i == n ) {
+                    document.getElementsByClassName('h2_about')[i].style = 'display: none;';
+                    document.getElementsByClassName('input_edit')[i].style = 'display: block;';
+                }
+                else {
+                    document.getElementsByClassName('h2_about')[i].style = 'display: block;';
+                    document.getElementsByClassName('input_edit')[i].style = 'display: none;';
+                }
+                document.getElementsByClassName('input_edit')[n].innerHTML = "";
+            }
+        }
+        else if( temp.length < 5 ) {
+            document.getElementsByClassName('input_edit')[n].style = 'display: block; background-color: rgb(255, 0, 0, 0.4);';
+            document.getElementsByClassName('input_edit')[n].innerHTML = "";
+            qwerqwerqewr = !qwerqwerqewr;
+        }
+        else {
+            let user_id = localStorage.getItem('user-id');
+            let user_array = getUsers();
+            if( n == 0 ) user_array[user_id-1].user_name = temp;
+            else if( n == 1) user_array[user_id-1].first_name = temp;
+            else if( n == 2 ) user_array[user_id-1].last_name = temp;
+            else if( n == 3 ) user_array[user_id-1].email = temp;
+            else if( n == 4 ) user_array[user_id-1].password = temp;
+            localStorage.setItem('users', JSON.stringify(user_array));
+            document.getElementsByClassName('h2_about')[n].innerHTML = temp;
+            document.getElementsByClassName('h2_about')[n].style = 'display: block;';
+            document.getElementsByClassName('input_edit')[n].style = 'display: none;';
+            qwerqwerqewr = !qwerqwerqewr;
+        }
+    }
+}
+
 // CART
 function loadBasket() {
     let basket_array  = getCart();
@@ -238,24 +337,31 @@ function loadBasket() {
         );
     }
     else {
-        console.log( basket_array[user_id-1] );
         let i = 0;
-        let div = '<h3>CART</h3>';
+        let div = '<h3 id="cart_empty">CART</h3>';
+        let total = 0;
+        total = parseInt(total);
         basket_array[user_id-1].product_id.forEach((basket) => {
-            i++;
+            console.log( typeof(products[basket-1].price) );
+            price = products[basket-1].price * basket_array[user_id-1].count_goods[i];
             div += 
-            '<div class="goods-list">' +
+            '<div class="goods-list" id="delete_cart_id_' + basket_array[user_id-1].product_id[i] + '">' +
                 '<h3>Model: ' + products[basket-1].name + '</h3>' +
+                '<h3 id="price' + products[basket-1].id + '">Price: ' + price + '$</h3>' +
                 '<div class="bttns">' +
-                    '<button class="around-5" onclick="delete_basket(' + products[basket-1].id + ')">+</button>' +
-                    '<h3 class="around-5">' + basket_array[user_id-1].count_goods[i] + '</h3>' +
-                    '<button class="around-5" onclick="delete_basket(' + products[basket-1].id + ')">-</button>' +
-                    '<button class="around-5" onclick="delete_basket(' + products[basket-1].id + ')">DELETE</button>' +
+                    '<button class="around-5 cart_bttn" onclick="to_basket(' + products[basket-1].id + ')">+</button>' +
+                    '<h3 class="around-5" id="count' + products[basket-1].id + '">' + basket_array[user_id-1].count_goods[i] + '</h3>' +
+                    '<button class="around-5 cart_bttn" onclick="min_basket(' + products[basket-1].id + ')">-</button>' +
+                    '<button class="around-5 cart_bttn" onclick="delete_basket(' + products[basket-1].id + ')">DELETE</button>' +
                 '</div>' +
             '</div>'
+            total += price;
+            i++;
         });
-        div += 
-            '<h3>TOTAL</h3>';
+        div += (
+            '<h3 id="total_empty">TOTAL: ' + total + '$</h3>'
+        );
+        localStorage.setItem('total', parseInt(total));
 
         $("#goods_basket").append(div);
     }
@@ -270,7 +376,6 @@ function to_basket(n) {
         let user_id = localStorage.getItem('user-id');
         let basket_array = getCart();
         let basket = basket_array[user_id-1].product_id;
-        console.log( basket );
 
         let check = 0;
         let index;
@@ -278,37 +383,84 @@ function to_basket(n) {
             if( n == basket[i] ) {
                 check = -1;
                 index = i;
+                console.log( document.getElementById('total_empty').value );
+                let total = localStorage.getItem('total');
+                document.getElementById('total_empty').innerHTML = total;
                 break;
             }
-        }            
+        }
 
         if( check == -1 ) {
-            let temp_count = basket_array[user_id-1].count_goods[index];
-            basket_array[user_id-1].count_goods[index] = temp_count+1;
+            let temp_count = 1+basket_array[user_id-1].count_goods[index];
+            basket_array[user_id-1].count_goods[index] = temp_count;
+            document.getElementById('count'+n).innerHTML = temp_count;
+            document.getElementById('price'+n).innerHTML = 'Price: ' + temp_count * products[basket_array[user_id-1].product_id[index]].price;
+            document.querySelector('#goods_basket').innerHTML="";
+            loadBasket();
         }
         else {
-            console.log( "IN CART" );
             basket_array[user_id-1].product_id.push(n);
-            basket_array[user_id-1].count_goods.push(temp);
+            basket_array[user_id-1].count_goods.push(1);
         }
+
 
         localStorage.setItem('cart', JSON.stringify(basket_array));
     }
 }
 
+function min_basket(n) {
+    let user_id = localStorage.getItem('user-id');
+    let basket_array = getCart();
+    let basket = basket_array[user_id-1].product_id;
+
+    let index;
+    for( let i = 0; i < basket.length; i++ ) {
+        if( n == basket[i] ) {
+            check = -1;
+            index = i;
+            break;
+        }
+    }
+
+    if( basket_array[user_id-1].count_goods[index] == 1 ) {
+        delete_basket(n);
+    }
+    else {
+        let temp_count = basket_array[user_id-1].count_goods[index]-1;
+        basket_array[user_id-1].count_goods[index] = temp_count;
+        document.getElementById('count'+n).innerHTML = temp_count;
+
+
+        document.getElementById('price'+n).innerHTML = 'Price: ' + temp_count * products[basket_array[user_id-1].product_id[index]].price;
+        document.querySelector('#goods_basket').innerHTML="";
+        loadBasket();
+    }
+
+    localStorage.setItem('cart', JSON.stringify(basket_array));
+}
+
 function delete_basket(n) {
     let user_id = localStorage.getItem('user-id');
-    let basket_array = getWishlist();
+    let basket_array = getCart();
     let temp_array = basket_array[user_id-1].product_id;
 
     for( let i = 0; i < temp_array.length; i++ ) {
         if( n == temp_array[i] ) {
             index = -1;
+            document.getElementById('delete_cart_id_'+basket_array[user_id-1].product_id[i]).style = "display: none;";
             basket_array[user_id-1].product_id.splice(i, 1);
             basket_array[user_id-1].count_goods.splice(i, 1);
             break;
         }
     }
+    if( temp_array.length == 0 ) {
+        $("#goods_basket").append(
+            '<h1>CART IS EMPTY</h1>'
+        );
+        document.getElementById('cart_empty').style = "display: none;";
+        document.getElementById('total_empty').style = "display: none;";
+    }
+
     localStorage.setItem('cart', JSON.stringify(basket_array));
 }
 
@@ -490,7 +642,7 @@ function sign_in(n) {
     }
     else if( n == 1 ) window.location.href = 'wish-list.html';
     else if( n == 2 ) window.location.href = 'basket.html';
-    // else if( n == 3  ) window.location.href = 'account.html';
+    else if( n == 3  ) window.location.href = 'about_account.html';
 }
 
 // LOAD
